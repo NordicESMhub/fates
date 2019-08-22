@@ -2483,7 +2483,7 @@ contains
                write(fates_log(),*) 'ERROR in plant hydraulics.'
                write(fates_log(),*) 'The HLM predicted a non-zero total transpiration flux'
                write(fates_log(),*) 'for this patch, yet there is no leaf-area-weighted conductance?'
-               call endrun(msg=errMsg(sourcefile, __LINE__))
+               !call endrun(msg=errMsg(sourcefile, __LINE__))
            end if
 
            ccohort=>cpatch%tallest
