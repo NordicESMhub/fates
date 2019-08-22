@@ -3550,7 +3550,7 @@ contains
              thresh
     else if (abs(we_local) > thresh_break) then
        write(fates_log(),*)'EDPlantHydraulics water balance error exceeds threshold of = ', thresh_break
-       call endrun(msg=errMsg(sourcefile, __LINE__))
+       !call endrun(msg=errMsg(sourcefile, __LINE__))
     end if
     
     ! TOTAL NET WATER BALANCE AND ERROR ADJUST HACK
