@@ -375,6 +375,7 @@ module FatesHistoryInterfaceMod
   integer :: ih_nindivs_si_pft
   integer :: ih_recruitment_si_pft
   integer :: ih_mortality_si_pft
+  integer :: ih_btran_si_pft
   integer :: ih_crownarea_si_pft
 
 
@@ -1453,6 +1454,7 @@ end subroutine flush_hvars
                hio_nindivs_si_pft      => this%hvars(ih_nindivs_si_pft)%r82d, &
                hio_recruitment_si_pft  => this%hvars(ih_recruitment_si_pft)%r82d, &
                hio_mortality_si_pft    => this%hvars(ih_mortality_si_pft)%r82d, &
+               hio_btran_si_pft        => this%hvars(ih_btran_si_pft)%r82d, &
                hio_crownarea_si_pft    => this%hvars(ih_crownarea_si_pft)%r82d, &
                hio_nesterov_fire_danger_pa => this%hvars(ih_nesterov_fire_danger_pa)%r81d, &
                hio_spitfire_ros_pa     => this%hvars(ih_spitfire_ROS_pa)%r81d, &
@@ -2436,6 +2438,11 @@ end subroutine flush_hvars
                     hio_m8_si_scpf(io_si,i_scpf)
 
             end do
+         end do
+
+         do i_pft = 1, numpft
+	    hio_btran_si_pft(io_si,i_pft) = hio_btran_si_PFT(io_si,i_pft) + &
+            ccohort%btran_ft(io_si,i_pft)*ccohort%n     ! [-] 
          end do
 
          ! pass demotion rates and associated carbon fluxes to history
@@ -3485,6 +3492,11 @@ end subroutine flush_hvars
          long='Rate of total mortality by PFT', use_default='active',       &
          avgflag='A', vtype=site_pft_r8, hlms='CLM:ALM', flushval=0.0_r8, upfreq=1, &
          ivar=ivar, initialize=initialize_variables, index = ih_mortality_si_pft )
+
+    call this%set_history_var(vname='BTRAN_FT',  units='uniteless',            &
+         long='btran calculated seperately for each PFT', use_default='active',       &
+         avgflag='A', vtype=site_pft_r8, hlms='CLM:ALM', flushval=0.0_r8, upfreq=1, &
+         ivar=ivar, initialize=initialize_variables, index = ih_btran_si_pft )
 
     ! patch age class variables
     call this%set_history_var(vname='PATCH_AREA_BY_AGE', units='m2/m2',             &
