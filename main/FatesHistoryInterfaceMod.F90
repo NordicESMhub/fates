@@ -1366,6 +1366,7 @@ end subroutine flush_hvars
     use EDtypesMod          , only : ncwd
     use EDtypesMod          , only : ican_upper
     use EDtypesMod          , only : ican_ustory
+    use EDtypesMod          , only : btran_ft
     use FatesSizeAgeTypeIndicesMod, only : get_sizeage_class_index
     use FatesSizeAgeTypeIndicesMod, only : get_sizeagepft_class_index
     use FatesSizeAgeTypeIndicesMod, only : get_agepft_class_index
@@ -2441,8 +2442,7 @@ end subroutine flush_hvars
          end do
 
          do i_pft = 1, numpft
-	    hio_btran_si_pft(io_si,i_pft) = hio_btran_si_PFT(io_si,i_pft) + &
-            ccohort%btran_ft(io_si,i_pft)*ccohort%n     ! [-] 
+	    hio_btran_si_pft(io_si,i_pft) = btran_ft(io_si,i_pft)    ! [-] 
          end do
 
          ! pass demotion rates and associated carbon fluxes to history
