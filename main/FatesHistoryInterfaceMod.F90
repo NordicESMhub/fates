@@ -375,7 +375,7 @@ module FatesHistoryInterfaceMod
   integer :: ih_nindivs_si_pft
   integer :: ih_recruitment_si_pft
   integer :: ih_mortality_si_pft
-  integer :: ih_btran_si_pft
+  integer :: ih_btran_si_pft !marius
   integer :: ih_crownarea_si_pft
 
 
@@ -1455,7 +1455,7 @@ end subroutine flush_hvars
                hio_nindivs_si_pft      => this%hvars(ih_nindivs_si_pft)%r82d, &
                hio_recruitment_si_pft  => this%hvars(ih_recruitment_si_pft)%r82d, &
                hio_mortality_si_pft    => this%hvars(ih_mortality_si_pft)%r82d, &
-               hio_btran_si_pft        => this%hvars(ih_btran_si_pft)%r82d, &
+               hio_btran_si_pft        => this%hvars(ih_btran_si_pft)%r82d, & !marius
                hio_crownarea_si_pft    => this%hvars(ih_crownarea_si_pft)%r82d, &
                hio_nesterov_fire_danger_pa => this%hvars(ih_nesterov_fire_danger_pa)%r81d, &
                hio_spitfire_ros_pa     => this%hvars(ih_spitfire_ROS_pa)%r81d, &
@@ -2442,7 +2442,7 @@ end subroutine flush_hvars
          end do
 
          do i_pft = 1, numpft
-	    hio_btran_si_pft(io_si,i_pft) = cpatch%btran_ft(io_si,i_pft)    ! [-] 
+	    hio_btran_si_pft(io_si,i_pft) = cpatch%btran_ft(io_si,i_pft)    ! [-] marius
          end do
 
          ! pass demotion rates and associated carbon fluxes to history
@@ -3013,7 +3013,7 @@ end subroutine flush_hvars
           hio_tflc_scpf          => this%hvars(ih_tflc_scpf)%r82d, &  
           hio_sflc_scpf          => this%hvars(ih_sflc_scpf)%r82d, &                     
           hio_lflc_scpf          => this%hvars(ih_lflc_scpf)%r82d, &                   
-          hio_btran_scpf        => this%hvars(ih_btran_scpf)%r82d, &
+          hio_btran_scpf        => this%hvars(ih_btran_scpf)%r82d, & 
           hio_h2oveg_si         => this%hvars(ih_h2oveg_si)%r81d, &
           hio_nplant_si_scpf    => this%hvars(ih_nplant_si_scpf)%r82d, &
           hio_h2oveg_hydro_err_si    => this%hvars(ih_h2oveg_hydro_err_si)%r81d )
@@ -3495,7 +3495,7 @@ end subroutine flush_hvars
 
     call this%set_history_var(vname='BTRAN_FT',  units='uniteless',            &
          long='btran calculated seperately for each PFT', use_default='active',       &
-         avgflag='A', vtype=site_pft_r8, hlms='CLM:ALM', flushval=0.0_r8, upfreq=1, &
+         avgflag='A', vtype=site_pft_r8, hlms='CLM:ALM', flushval=0.0_r8, upfreq=1, & !marius
          ivar=ivar, initialize=initialize_variables, index = ih_btran_si_pft )
 
     ! patch age class variables
