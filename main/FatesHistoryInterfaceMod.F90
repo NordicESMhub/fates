@@ -1366,7 +1366,6 @@ end subroutine flush_hvars
     use EDtypesMod          , only : ncwd
     use EDtypesMod          , only : ican_upper
     use EDtypesMod          , only : ican_ustory
-    use EDtypesMod          , only : btran_ft !marius
     use FatesSizeAgeTypeIndicesMod, only : get_sizeage_class_index
     use FatesSizeAgeTypeIndicesMod, only : get_sizeagepft_class_index
     use FatesSizeAgeTypeIndicesMod, only : get_agepft_class_index
@@ -1405,7 +1404,6 @@ end subroutine flush_hvars
     integer  :: ageclass_since_anthrodist  ! what is the equivalent age class for
                                            ! time-since-anthropogenic-disturbance of secondary forest
 
-    real(r8) :: btran_ft   !marius
     real(r8) :: n_density   ! individual of cohort per m2.
     real(r8) :: n_perm2     ! individuals per m2 for the whole column
     real(r8) :: patch_scaling_scalar ! ratio of canopy to patch area for counteracting patch scaling
@@ -1875,6 +1873,8 @@ end subroutine flush_hvars
                   hio_biomass_secondary_forest_si(io_si) = hio_biomass_secondary_forest_si(io_si) + &
                        total_c * ccohort%n * AREA_INV
                endif
+
+               hio_btran_si_pft(io_si,ft) = ccohort%cpatch%btran_ft(io_si,ft)    ! [-] marius
 
                ! Site by Size-Class x PFT (SCPF) 
                ! ------------------------------------------------------------------------
@@ -2439,10 +2439,6 @@ end subroutine flush_hvars
                     hio_m8_si_scpf(io_si,i_scpf)
 
             end do
-         end do
-
-         do i_pft = 1, numpft
-	    hio_btran_si_pft(io_si,i_pft) = cpatch%btran_ft(io_si,i_pft)    ! [-] marius
          end do
 
          ! pass demotion rates and associated carbon fluxes to history
