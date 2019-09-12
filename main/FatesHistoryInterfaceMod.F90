@@ -4515,27 +4515,27 @@ end subroutine flush_hvars
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_nplant_si_scpf )
 
     call this%set_history_var(vname='M1_SCPF', units = 'N/ha/yr',          &
-          long='background mortality by pft/size', use_default='inactive', &
+          long='background mortality by pft/size', use_default='active', &
           avgflag='A', vtype=site_size_pft_r8, hlms='CLM:ALM', flushval=0.0_r8,    &
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_m1_si_scpf )
     
     call this%set_history_var(vname='M2_SCPF', units = 'N/ha/yr',          &
-          long='hydraulic mortality by pft/size',use_default='inactive', &
+          long='hydraulic mortality by pft/size',use_default='active', &
           avgflag='A', vtype=site_size_pft_r8, hlms='CLM:ALM', flushval=0.0_r8,    &
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_m2_si_scpf )
 
     call this%set_history_var(vname='M3_SCPF', units = 'N/ha/yr',          &
-          long='carbon starvation mortality by pft/size', use_default='inactive', &
+          long='carbon starvation mortality by pft/size', use_default='active', &
           avgflag='A', vtype=site_size_pft_r8, hlms='CLM:ALM', flushval=0.0_r8,    &
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_m3_si_scpf )
 
     call this%set_history_var(vname='M4_SCPF', units = 'N/ha/yr',          &
-          long='impact mortality by pft/size',use_default='inactive', &
+          long='impact mortality by pft/size',use_default='active', &
           avgflag='A', vtype=site_size_pft_r8, hlms='CLM:ALM', flushval=0.0_r8,    &
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_m4_si_scpf )
 
     call this%set_history_var(vname='M5_SCPF', units = 'N/ha/yr',          &
-          long='fire mortality by pft/size',use_default='inactive', &
+          long='fire mortality by pft/size',use_default='active', &
           avgflag='A', vtype=site_size_pft_r8, hlms='CLM:ALM', flushval=0.0_r8,    &
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_m5_si_scpf )
 
@@ -4550,17 +4550,17 @@ end subroutine flush_hvars
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_cambialfiremort_si_scpf )
 
     call this%set_history_var(vname='M6_SCPF', units = 'N/ha/yr',          &
-          long='termination mortality by pft/size',use_default='inactive', &
+          long='termination mortality by pft/size',use_default='active', &
           avgflag='A', vtype=site_size_pft_r8, hlms='CLM:ALM', flushval=0.0_r8,    &
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_m6_si_scpf )
 
     call this%set_history_var(vname='M7_SCPF', units = 'N/ha/event',               &
-          long='logging mortality by pft/size',use_default='inactive',           &
+          long='logging mortality by pft/size',use_default='active',           &
           avgflag='A', vtype=site_size_pft_r8, hlms='CLM:ALM', flushval=0.0_r8,    &
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_m7_si_scpf )
 
     call this%set_history_var(vname='M8_SCPF', units = 'N/ha/yr',          &
-          long='freezing mortality by pft/size',use_default='inactive', &
+          long='freezing mortality by pft/size',use_default='active', &
           avgflag='A', vtype=site_size_pft_r8, hlms='CLM:ALM', flushval=0.0_r8,    &
           upfreq=1, ivar=ivar, initialize=initialize_variables, index = ih_m8_si_scpf )
 
